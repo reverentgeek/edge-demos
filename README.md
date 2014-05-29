@@ -4,7 +4,7 @@ Demos from my presentation [Bridging Node.js and .NET using Edge.js](http://pres
 
 ##Running Samples
 
-* Install Node.js
+* Install [Node.js](http://nodejs.org/)
 * Clone this repository or download the source
 * Open a command prompt / terminal and change to project folder
 * Install dependencies
