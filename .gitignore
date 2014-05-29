@@ -22,4 +22,24 @@ build/Release
 # Dependency directory
 # Deployed apps should consider commenting this line out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
-node_modules
+
+node_modules/
+.idea/
+.DS_Store
+*.userprefs
+*.user
+*.suo
+bin
+obj
+build
+*.suo
+_ReSharper*
+Coverage.log
+TestResult.xml
+*.sln.cache
+_UpgradeReport_Files
+UpgradeLog.XML
+*.orig
+._*
+Thumbs.db
+packages

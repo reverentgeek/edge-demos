@@ -1,0 +1,1 @@
+	var edge = require('edge');	var helloWorld = edge.func(function() {/*		async (input) => {			// I can do all kinds of C# in here...			return input.ToString();		}	*/});	helloWorld('I love bacon!!', function (error, result) {	    if (error) throw error;	    console.log(result);	});
