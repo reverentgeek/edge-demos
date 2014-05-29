@@ -7,7 +7,7 @@ Demos from my presentation [Bridging Node.js and .NET using Edge.js](http://pres
 * Install [Node.js](http://nodejs.org/)
 * Clone this repository or download the source
 * Open a command prompt / terminal and change to project folder
-* Install dependencies
+* Install dependencies. Note: If you're running on OS X or Linux, you'll need to [install Mono x64](https://github.com/tjanczuk/edge#building-on-osx) first.
 
         npm install
 
