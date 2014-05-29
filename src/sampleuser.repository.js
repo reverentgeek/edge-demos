@@ -1,0 +1,1 @@
+var edge     = require( 'edge' ),    should   = require( 'should' );var SampleUserRepository = function() {  var getUsers = edge.func( {    assemblyFile: './edge-demos/bin/Debug/edge-demos.dll',    typeName: 'edgedemos.SampleUserRepository',    methodName: 'GetPagedList'  } );  return {    getUsers: getUsers  };};module.exports = SampleUserRepository;

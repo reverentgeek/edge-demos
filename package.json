@@ -2,14 +2,24 @@
   "name": "edge-demos",
   "version": "0.0.1",
   "description": "Edge.js Demos",
-  "main": "index.js",
+  "main": "./src/index.js",
   "dependencies": {
-    "edge": "^0.9.0",
-    "edge-sql": "^0.1.1"
+    "edge": "~0.9.0",
+    "lodash": "~2.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "~3.6.2",
+    "gulp-mocha": "~0.4.1",
+    "gulp-util": "~2.2.14",
+    "mocha": "~1.20.0",
+    "should": "~4.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/reverentgeek/edge-demos"
   },
   "keywords": [
     "Edge.js",

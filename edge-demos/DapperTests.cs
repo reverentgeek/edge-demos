@@ -23,8 +23,8 @@ namespace edgedemos
 SET NOCOUNT ON;
 
 DECLARE @RowStart int, @RowEnd int;
-SET @RowStart = (@pageNumber - 1) * @pageSize + 1;
-SET @RowEnd = @pageNumber * @pageSize;
+SET @RowStart = (@currentPage - 1) * @pageSize + 1;
+SET @RowEnd = @currentPage * @pageSize;
 
 WITH Paging AS
 (
@@ -57,30 +57,6 @@ FROM	SampleUsers;
 				var totalRows = results.Read<int> ().FirstOrDefault();
 				return new { count = rows.Count(), total = totalRows, value = rows };
 			}
-		}
-	}
-
-	public class SampleUser
-	{
-		public int Id { get; set; }
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string Email { get; set; }
-		public DateTime CreateDate { get; set; }
-	}
-
-	public static class DapperExtensions
-	{
-		public static DynamicParameters ToDapperParameters(this IDictionary<string, object> input)
-		{
-			var parameters = new DynamicParameters();
-			if (input == null)
-				return parameters;
-
-			foreach (KeyValuePair<string, object> parameter in input) {
-				parameters.Add (parameter.Key, parameter.Value);
-			}
-			return parameters;
 		}
 	}
 }

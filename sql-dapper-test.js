@@ -1,1 +1,0 @@
-var edge = require('edge');var getUsers = edge.func({    assemblyFile: './edge-demos/bin/Debug/edge-demos.dll',    typeName: 'edgedemos.DapperTests',    methodName: 'QueryUsers'  });getUsers({pageSize: 3, pageNumber: 1}, function(err, res) {	if (err) throw err;	console.log(res);});

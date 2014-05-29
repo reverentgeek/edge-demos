@@ -13,8 +13,8 @@ namespace edgedemos
 		{
 			var query = @"
 DECLARE @RowStart int, @RowEnd int;
-SET @RowStart = (@pageNumber - 1) * @pageSize + 1;
-SET @RowEnd = @pageNumber * @pageSize;
+SET @RowStart = (@currentPage - 1) * @pageSize + 1;
+SET @RowEnd = @currentPage * @pageSize;
 
 WITH Paging AS
 (
