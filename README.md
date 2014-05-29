@@ -9,13 +9,13 @@ Demos from my presentation [Bridging Node.js and .NET using Edge.js](http://pres
 * Open a command prompt / terminal and change to project folder
 * Install dependencies
 
-      npm install
+        npm install
 
 * Run gulp tests
 
-      gulp
+        gulp
       
 * Run individual samples
 
-      node ./samples/101-hello-world.js
+        node ./samples/101-hello-world.js
       
