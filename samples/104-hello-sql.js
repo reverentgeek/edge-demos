@@ -1,6 +1,6 @@
 var edge = require('edge');
 
-var getUsers = edge.func('./sql-demo.csx');
+var getUsers = edge.func('./sql-demo.cs');
 
 var page = { currentPage: 1, pageSize: 3 };
 
