@@ -28,9 +28,9 @@ FROM    Paging
 WHERE   RowNum BETWEEN @RowStart AND @RowEnd
 ORDER BY RowNum;
 ";
+        // This runs the query using the CLR thread pool
         var queryTask = Task<object>.Factory.StartNew (() => ExecuteQuery (query, input));
         return await queryTask;
-        // return await ExecuteQuery (query, input);
     }
 
     public object ExecuteQuery(string query, IDictionary<string, object> parameters)

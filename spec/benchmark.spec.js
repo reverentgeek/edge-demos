@@ -1,6 +1,6 @@
-var request = require( 'request-json' ),
-    async   = require( 'async' ),
-    edge    = require( 'edge' );
+var async   = require( 'async' ),
+    edge    = require( 'edge' ),
+    http    = require( 'http' );
 
 describe.skip('Benchmark tests', function(){
     this.timeout(0);
@@ -57,15 +57,23 @@ describe.skip('Benchmark tests', function(){
     });
 
     it('should benchmark web service call', function(done) {
-        var client = request.newClient('http://benchmark.aspnet.local/api/');
+
         var restCalls = [];
         for(var i = 0; i < iterations; i++) {
             (function(i) {
                 restCalls.push(function(callback) {
-                    client.get('calculator/add/' + i + '/' + i, function(err, res, body) {
-                        //console.log(body);
-                        callback(null, body);
-                    });                    
+                    var result = 0;
+                    var url = 'http://benchmark.aspnet.local/api/calculator/add/' + i + '/' + i + '?format=json'
+                    http.get(url, function(res) {
+                        // console.log(res);
+                        res.on('data', function(chunk) {
+                            result = parseInt(chunk.toString());
+                            console.log(result);
+                        });
+                        res.on('end', function() {
+                            callback(null, result);
+                        });
+                    });
                 });
             })(i);
         }
