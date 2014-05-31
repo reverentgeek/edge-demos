@@ -2,7 +2,7 @@ var async   = require( 'async' ),
     edge    = require( 'edge' ),
     http    = require( 'http' );
 
-describe.skip('Benchmark tests', function(){
+describe.only('Benchmark tests', function(){
     this.timeout(0);
     var iterations = 200;
 
@@ -68,7 +68,7 @@ describe.skip('Benchmark tests', function(){
                         // console.log(res);
                         res.on('data', function(chunk) {
                             result = parseInt(chunk.toString());
-                            console.log(result);
+                            //console.log(result);
                         });
                         res.on('end', function() {
                             callback(null, result);
