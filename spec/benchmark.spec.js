@@ -2,7 +2,7 @@ var async   = require( 'async' ),
     edge    = require( 'edge' ),
     http    = require( 'http' );
 
-describe.only('Benchmark tests', function(){
+describe.skip('Benchmark tests', function(){
     this.timeout(0);
     var iterations = 200;
 
