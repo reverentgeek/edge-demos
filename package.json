@@ -8,12 +8,13 @@
     "lodash": "~2.4.1"
   },
   "devDependencies": {
+    "async": "~0.9.0",
     "gulp": "~3.6.2",
     "gulp-mocha": "~0.4.1",
     "gulp-util": "~2.2.14",
     "mocha": "~1.20.0",
     "should": "~4.0.0",
-    "async": "^0.9.0"
+    "wascally": "~0.1.9"
   },
   "scripts": {
     "test": "gulp"

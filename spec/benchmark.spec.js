@@ -56,6 +56,64 @@ describe.skip('Benchmark tests', function(){
         });
     });
 
+    it('should benchmark RabbitMQ publish call', function(done) {
+        var rabbit;
+        var config = {
+            connection: {
+                user: 'admin',
+                pass: 'admin',
+                server: '10.37.129.3',
+                port: 5672,
+                vhost: '/edge'
+                },
+            exchanges:[
+                { name: 'edge-ex.1', type: 'fanout'  },
+                { name: 'dead-letter-ex.1', type: 'fanout' }
+                ],
+            queues:[
+                { name:'edge-q.1', limit: 100, queueLimit: 1000, deadLetter: 'dead-letter-ex.1' }
+                ],
+            bindings:[
+                { exchange: 'edge-ex.1', target: 'edge-q.1' }
+            ]
+        };
+
+        rabbit = require( 'wascally' );
+        rabbit.on('error', function(err) {
+            console.log(err);
+            done();
+        })
+        rabbit.configure( config ).done( function() {
+            var rabbitCalls = [];
+            for(var i = 0; i < iterations; i++) {
+                (function(i) {
+                    rabbitCalls.push(function(callback) {
+                        var message = { x: i, y: i };
+                        rabbit.publish( 'edge-ex.1', 'edge.benchmarks.messages.testMessage', message );
+                        callback(null, i);
+                    });
+                })(i);
+            }
+            var start = new Date();
+            async.series(rabbitCalls, function(err, results) {
+                var totalTime = (new Date() - start);
+                var averageResponse = totalTime / iterations;
+                if (err) console.log('Error:', err);
+                console.log('Average Response: ' + averageResponse + 'ms');
+                // console.log(results);
+                done();
+            });
+        } );
+
+        after(function(done) {
+            rabbit.closeAll( true )
+                .then( function() {
+                    done();
+                } );
+        })
+
+    });
+
     it('should benchmark web service call', function(done) {
 
         var restCalls = [];
